@@ -27,9 +27,9 @@ import org.assertj.core.util.VisibleForTesting;
  * <p>
  * To create an instance of this class, invoke <code>{@link Assertions#assertThat(Iterable)}</code>.
  * </p>
- * 
+ *
  * @param <ELEMENT> the type of elements of the "actual" value.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  * @author Matthieu Baechler
@@ -128,7 +128,7 @@ public class IterableAssert<ELEMENT> extends
     }
     return super.isNotExactlyInstanceOf(type);
   }
-  
+
   @Override
   public IterableAssert<ELEMENT> isSameAs(Object expected) {
     if (actual instanceof LazyIterable) {
@@ -220,6 +220,13 @@ public class IterableAssert<ELEMENT> extends
     return list;
   }
 
+
+  @Override
+  @SafeVarargs
+  public final IterableAssert<ELEMENT> contains(ELEMENT... values) {
+    return super.contains(values);
+  }
+
   @Override
   @SafeVarargs
   public final IterableAssert<ELEMENT> containsOnly(ELEMENT... values) {
@@ -260,6 +267,12 @@ public class IterableAssert<ELEMENT> extends
   @SafeVarargs
   public final IterableAssert<ELEMENT> containsSubsequence(ELEMENT... sequence) {
     return super.containsSubsequence(sequence);
+  }
+
+  @Override
+  @SafeVarargs
+  public final IterableAssert<ELEMENT> doesNotContain(ELEMENT... values) {
+    return super.doesNotContain(values);
   }
 
   @Override
